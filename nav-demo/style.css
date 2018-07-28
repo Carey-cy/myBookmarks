@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+main {
+    text-align: center;
+}
+kbd {
+    border: 1px solid red;
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+    text-transform: uppercase; /*这个属性的意思是将小写字母换成大写的字母 */
+    position: relative;
+}
+kbd > button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;  /*不会出现,hover时才出现*/
+}
+kbd:hover > button {  /*注意是谁hover*/
+    display:inline-block
+}
+#mainxx {
+    display: inline-block;  
+}
+#mainxx > div:nth-child(2) {
+    margin-left: 0em;
+}
+#mainxx > div:nth-child(3) {
+    margin-left: 0.5em;
+}

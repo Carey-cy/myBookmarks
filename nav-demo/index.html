@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header></header>
+    <main >
+        <div class="wrapper" id = "mainxx" ></div> <!--再加外面加一个爸爸，把其他三个div包在里面，方便居中等操作 -->
+    </main>
+    <footer></footer>
+    <script>
+        var keys={
+            0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+            1:{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            2:{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            length:3
+        }
+        var hash={
+            q:'qq.com',
+            w:'weibo.com',
+            e:'ele.me',
+            r:'renren.com',
+            t:'tmall.com',
+            y:'youtube.com',
+            u:'u17.com',
+            i:'iqiyi.com',
+            o:'oray.com',
+            p:'panda.tv',
+            a:'amazon.cn',
+            s:'sohu.com',
+            d:'douban.com',
+            f:'fengniao.com',
+            g:'google.com',
+            h:'huanqiu.com',
+            j:'jjwxc.net',
+            k:'kugou.com',
+            l:'lagou.com',
+            z:'zhihu.com',
+            x:'xiedaimala.com',
+            c:'ctrip.com',
+            v:'vip.com',
+            b:'bilibili.com',
+            n:'nuomi.com',
+            m:'meituan.com'
+        }
+        // 每次进来查看一下有没有存档，有就覆盖一下
+        var hashInlocalStorage = JSON.parse(localStorage.getItem('uuu')|| 'null')
+            if(hashInlocalStorage){
+                hash = hashInlocalStorage
+            }
+        // 遍历keys ，生成kbd标签
+        index = 0
+        while(index< keys['length']){  //取到0 1 2 
+            divxx = document.createElement('div')
+            mainxx.appendChild(divxx)
+            row = keys[index]  //取到第一个数组  第二个数组  第三个数组
+            // console.log(row)  =  print row  打印数组，很重要
+            index2 = 0
+            while(index2 < row['length']){ //index2分别取到0-9，0-8， 0-6。
+                kbdxx = document.createElement('kbd')
+                kbdxx.textContent = row[index2]             
+                buttonxx = document.createElement('button')
+                buttonxx.textContent = '编辑'
+                buttonxx.id = row[index2]
+                buttonxx.onclick = function(ksadauhdbc){
+                    // console.log(buttonxx)  这个是出错的，因为buttonxx只是一个容器，只会保留最后一次结果
+                    key = ksadauhdbc['target']['id']  //取到用户的操作 点击的哪个button，q w  e
+                    x = prompt ('给我一个网址')  //取到用户输入的网址放到x里
+                    hash[key] = x   // hash里相应的key网址改变成用户输入的
+                    localStorage.setItem('uuu', JSON.stringify(hash)) //只要hash变了就存入uu，意思就是备份到了js之外,也就是存档
+                    console.log(hash)
+                }
+                divxx.appendChild(kbdxx)
+                kbdxx.appendChild(buttonxx)
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+        // 接下来就是要监听用户事件，我们要知道用户输入了什么按键
+        document.onkeypress = function(ksadauhdbc) { //重点就是橙色字母是自己！！随机！！取得，不要纠结这个，但是它又包含了你需要的所有信息！
+        //还一个重点，一开始我们可能会搞不清楚监听谁，比如这里是document。
+        // console.log('我监视到你输入了一个键')
+        // console.log('你的输入信息是')       这两句只是打印出来测试用，可以不写
+        // console.log(ksadauhdbc) 这里信息很多，我们只需要拿到key，就可以取到key就可以了
+            key = ksadauhdbc['key']   //取到'q','w','e'等等
+            website = hash[key] 
+        //  console.log(website)  我们打印出来看看有没有和哈希数组里的一致
+        // location.href = 'http://' + website   把当前的地址变成网站地址
+            window.open('http://' + website, '_blank')
+        // 当前网址新窗口打开
+        }
+        // 编辑hash, 使用户可以添加自己的网址在里面
+        //想法：添加button在kbd里，使用户点击的时候可以弹出对话框收集用户的网址并记录到哈希里
+        
+    </script>
+</body>
+</html>
