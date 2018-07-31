@@ -5,8 +5,20 @@
 a {
     text-decoration: none;
 }
+body {
+    background:grey url(images/wall.jpg) no-repeat center center;
+    background-size: cover; /*自适应 */
+}
 main {
     text-align: center;
+    height: 100vh;  /*view height 和屏幕一样高 */
+    display: flex;
+    align-items: center;      /*在屏幕中央了 */
+    justify-content: center;
+}
+.wrapper {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
 }
 kbd {
     border: 1px solid red;
@@ -16,6 +28,16 @@ kbd {
     text-transform: uppercase; /*这个属性的意思是将小写字母换成大写的字母 */
     position: relative;
 }
+kbd .text {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+}
+kbd img {
+    position: absolute;
+    left: 4px;
+    bottom: 0;
+}
 kbd > button {
     position: absolute;
     right: 0;
@@ -23,14 +45,38 @@ kbd > button {
     display: none;  /*不会出现,hover时才出现*/
 }
 kbd:hover > button {  /*注意是谁hover*/
-    display:inline-block
+    display:inline-block;
 }
 #mainxx {
     display: inline-block;  
 }
 #mainxx > div:nth-child(2) {
-    margin-left: 0em;
+    margin-left: 0px;
 }
 #mainxx > div:nth-child(3) {
-    margin-left: 0.5em;
+    margin-left: -75px;
+}
+.keyboard {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #292929, #111111);
+    border: 1px solid #373737;
+    color:#c5c5c5;
+    box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 3px 0 2px #080808;
+    border-radius: 7px;
+    font-size: 16px;
+    /* display: inline-flex;
+    align-items: center;
+    justify-content: center; 又放入了image，不让文字居中了*/
+    font-family: Helvetica;  
+}
+.keyboard img {
+    width: 16px;
+    height: 16px;
+}
+.row {
+    margin: 20px;
+}
+.row > kbd {
+    margin: 0 10px;
 }
