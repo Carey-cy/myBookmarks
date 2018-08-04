@@ -1,3 +1,2 @@
 # myBookmarks
-# nav-demo
-# canvas
+
