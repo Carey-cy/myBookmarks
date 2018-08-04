@@ -29,11 +29,11 @@
 
         // 下面就是工具函数了
         function OnFile(name){
-                return JSON.parse(localStorage.getItem(name)|| 'null')
-            }
+            return JSON.parse(localStorage.getItem(name)|| 'null')
+        }
         function tag(tagName){
-                return document.createElement(tagName)
-            }
+            return document.createElement(tagName)
+        }
         function init(){
             var keys={
                 0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
@@ -59,10 +59,10 @@
             }
         }
         function creatSpan(textContent){
-                    var spanx = tag('span')
-                    spanx.textContent = textContent 
-                    spanx.className = 'text'
-                    return spanx
+            var spanx = tag('span')
+            spanx.textContent = textContent 
+            spanx.className = 'text'
+            return spanx
         }
         function createButton(id){
             var buttonxx = tag('button')                                
@@ -75,12 +75,12 @@
                 var key = button2['id']
                 var x = prompt ('给我一个网址')  //取到用户输入的网址放到x里
                 hash[key] = x   // hash里相应的key网址改变成用户输入的
+                localStorage.setItem('uuu', JSON.stringify(hash)) //只要hash变了就存入uu，意思就是备份到了js之外,也就是存档
                 console.log(hash)
                 image2.src = 'http://' + x + '/favicon.ico'
                 image2.onerror = function(ccc){
                 ccc.target.src = '//i.loli.net/2018/07/31/5b5fd8809671f.png'
-                }
-                localStorage.setItem('uuu', JSON.stringify(hash)) //只要hash变了就存入uu，意思就是备份到了js之外,也就是存档
+                }    
             }
             return buttonxx
             }
