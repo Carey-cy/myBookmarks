@@ -7,26 +7,35 @@ for(let i=0; i<allButtons.length;i++){
         transform:'translateX('+ p +'px)'
     })
      m = index
-    allButtons.eq(m)
-        .addClass('highlight')
-        .siblings('.highlight')
-        .removeClass('highlight')
+    activeButton(allButtons.eq(m))
    }) 
 }
  var m = 0
  var size = allButtons.length
- allButtons.eq(m%size).trigger('click')
- var timeId = setInterval(()=>{
-    m+=1
-    allButtons.eq(m%size).trigger('click')
-},2000)
+    playSlide(m%size)
+ var timeId = setTimer()
+
+function activeButton($button){
+    $button
+        .addClass('highlight')
+        .siblings('.highlight')
+        .removeClass('highlight')
+}
+function playSlide(index){
+    allButtons.eq(index).trigger('click')
+}
+function setTimer (){
+    setInterval(()=>{
+        m+=1
+        playSlide(m%size)
+    },2000)
+}
+
+
 $('.window').on('mouseenter',function(){
     window.clearInterval(timeId)
 })
 $('.window').on('mouseleave',function(){
-    timeId = setInterval(()=>{
-        m+=1
-        allButtons.eq(m%size).trigger('click')
-    },2000)
+    timeId = setTimer()
 })
 
