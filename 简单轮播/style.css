@@ -1,0 +1,17 @@
+.window {
+    width: 275px;
+    overflow: hidden;
+}
+.images {
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.5s;
+}
+.images > img {
+    width: 300px;
+    vertical-align: top;
+}
+.highlight {
+    color: red;
+    font-weight: bold;   
+}
